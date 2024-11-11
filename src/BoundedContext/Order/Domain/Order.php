@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Src\BoundedContext\Product\Domain;
 
-use PhpParser\Node\Expr\Cast\Array_;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductDescription;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductDiscount;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductId;
