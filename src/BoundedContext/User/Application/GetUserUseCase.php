@@ -23,6 +23,6 @@ final class GetUserUseCase
 
         $user = $this->repository->find($id);
 
-        return $user;
+        return $user;   
     }
 }
