@@ -2,20 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Src\BoundedContext\Product\Domain;
+namespace Src\BoundedContext\Order\Domain;
 
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductDescription;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductDiscount;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductId;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductName;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductPrice;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductSku;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductStatus;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductStock;
 
-final class Product{
-    private $description;
-    private $discount;
+final class Order{
+    private $id;
+    private $userId;
     private $id;
     private $name;
     private $price;
