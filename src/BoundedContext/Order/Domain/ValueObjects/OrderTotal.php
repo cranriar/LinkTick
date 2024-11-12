@@ -34,7 +34,7 @@ final class OrderTotal
 )
         );
 
-        if (!filter_var($id, FILTER_VALIDATE_FLOAT, $options)) {
+        if (!filter_var($total, FILTER_VALIDATE_FLOAT, $options)) {
             throw new InvalidArgumentException(
                 sprintf('<%s> does not allow the value <%s>.', static::class, $total)
             );
