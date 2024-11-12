@@ -102,14 +102,10 @@ final class EloquentProductRepository implements ProductRepositoryContract
         
     }
 
-    public function list(): array{
-        $data = [];
+    public function list(): object{
         $products = $this->eloquentModelProduct
             ->get();
-        foreach ($products as $key => $value) {
-            array_push($data,$value);
-        }
-        return $data;
+        return $products;
     }
 
 }

@@ -19,5 +19,5 @@ interface ProductRepositoryContract
     public function findByCriteria(ProductName $productName, 
                     ProductDescription $productDescription, ProductSku $productSku
                     ): ?Product;
-    public function list(): array;
+    public function list(): object;
 }
