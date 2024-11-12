@@ -2,113 +2,90 @@
 
 declare(strict_types=1);
 
-namespace Src\BoundedContext\Product\Domain;
+namespace Src\BoundedContext\Order\Domain;
 
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductDescription;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductDiscount;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductId;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductName;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductPrice;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductSku;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductStatus;
-use Src\BoundedContext\Product\Domain\ValueObjects\ProductStock;
+use Src\BoundedContext\Order\Domain\ValueObjects\OrderDiscount;
+use Src\BoundedContext\Order\Domain\ValueObjects\OrderId;
+use Src\BoundedContext\Order\Domain\ValueObjects\OrderStatus;
+use Src\BoundedContext\Order\Domain\ValueObjects\OrderSubTotal;
+use Src\BoundedContext\Order\Domain\ValueObjects\OrderTax;
+use Src\BoundedContext\Order\Domain\ValueObjects\OrderTotal;
+use Src\BoundedContext\Order\Domain\ValueObjects\OrderUserId;
 
-final class Product{
-    private $description;
-    private $discount;
+final class Order{
     private $id;
-    private $name;
-    private $price;
-    private $sku;
+    private $userId;
+    private $discount;
+    private $subTotal;
+    private $tax;
+    private $total;
     private $status;
-    private $stock;
+  
 
     public function __construct(
-        ProductId $id,
-        ProductDescription $description,
-        ProductDiscount $discount,
-        ProductName $name,
-        ProductPrice $price,
-        ProductSku $sku,
-        ProductStatus $status,
-        ProductStock $stock
+        OrderId $id,
+        OrderUserId $userId,
+        OrderDiscount $discount,
+        OrderSubTotal $subTotal,
+        OrderTax $tax,
+        OrderTotal $total,
+        OrderStatus $status
     )
     {
         $this->id = $id;
-        $this->description = $description;
+        $this->userId = $userId;
         $this->discount = $discount;
-        $this->name = $name;
-        $this->price = $price;
-        $this->sku = $sku;
+        $this->subTotal = $subTotal;
+        $this->tax = $tax;
+        $this->total = $total;
         $this->status = $status;
-        $this->stock = $stock;
-        // $this->id = $id;
-
     }
 
-    public function description(): ProductDescription
-    {
-        return $this->description;
-    }
-
-    public function discount(): ProductDiscount
-    {
-        return $this->discount;
-    }
-
-    public function id(): ProductId
+    public function id(): OrderId
     {
         return $this->id;
     }
 
-    public function name(): ProductName
-    {
-        return $this->name;
+    public function userId(): OrderUserId{
+        return $this->userId;
     }
-
-    public function price(): ProductPrice
-    {
-        return $this->price;
+    public function discount(): OrderDiscount{
+        return $this->discount;
     }
-
-    public function sku(): ProductSku
-    {
-        return $this->sku;
+    public function subTotal(): OrderSubTotal{
+        return $this->subTotal;
     }
-
-    public function status(): ProductStatus
-    {
+    public function tax(): OrderTax{
+        return $this->tax;
+    }
+    public function total(): OrderTotal{
+        return $this->total;
+    }
+    public function status(): OrderStatus{
         return $this->status;
     }
 
-    public function stock(): ProductStock
-    {
-        return $this->stock;
-    }
-
     public static function create(
-        ProductId $id,
-        ProductDescription $description,
-        ProductDiscount $discount,
-        ProductName $name,
-        ProductPrice $price,
-        ProductSku $sku,
-        ProductStatus $status,
-        ProductStock $stock
-    ): Product 
+        OrderId $id,
+        OrderUserId $userId,
+        OrderDiscount $discount,
+        OrderSubTotal $subTotal,
+        OrderTax $tax,
+        OrderTotal $total,
+        OrderStatus $status
+    ): Order
     {
-        $product = new self(
+        $order = new self(
             $id,
-            $description,
+            $userId,
             $discount,
-            $name,
-            $price,
-            $sku,
+            $subTotal,
+            $tax,
+            $total,
             $status,
-            $stock,
         );
 
-        return $product;
+        return $order;
     }
 
 }

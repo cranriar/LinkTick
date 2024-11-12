@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Src\BoundedContext\OrderItem\Domain\ValueObjects;
+namespace Src\BoundedContext\Order\Domain\ValueObjects;
 
 use InvalidArgumentException;
 
-final class OrderItemStatus
+final class OrderStatus
 {
     private $value;
 
     /**
-     * OrderItemStatus constructor.
+     * OrderId constructor.
      * @param bool $status
      * @throws InvalidArgumentException
      */
@@ -22,13 +22,18 @@ final class OrderItemStatus
     }
 
     /**
-     * @param bool $status)
+     * @param bool $status
      * @throws InvalidArgumentException
      */
     private function validate(bool $status): void
     {
+        $options = array(
+            'options' => array(
+                'min_range' => 1,
+            )
+        );
 
-        if (!filter_var($status, FILTER_VALIDATE_BOOL, [])) {
+        if (!filter_var($status, FILTER_VALIDATE_BOOLEAN, $options)) {
             throw new InvalidArgumentException(
                 sprintf('<%s> does not allow the value <%s>.', static::class, $status)
             );

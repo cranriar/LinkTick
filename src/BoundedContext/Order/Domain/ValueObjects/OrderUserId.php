@@ -33,9 +33,9 @@ final class OrderUserId
             )
         );
 
-        if (!filter_var($id, FILTER_VALIDATE_INT, $options)) {
+        if (!filter_var($userId, FILTER_VALIDATE_INT, $options)) {
             throw new InvalidArgumentException(
-                sprintf('<%s> does not allow the value <%s>.', static::class, $id)
+                sprintf('<%s> does not allow the value <%s>.', static::class, $userId)
             );
         }
     }
