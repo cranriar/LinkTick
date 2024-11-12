@@ -22,10 +22,10 @@ final class OrderItemId
     }
 
     /**
-     * @param int $tax
+     * @param int $id
      * @throws InvalidArgumentException
      */
-    private function validate(int $tax): void
+    private function validate(int $id): void
     {
         $options = array(
             'options' => array(
