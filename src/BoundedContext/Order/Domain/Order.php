@@ -8,12 +8,10 @@ namespace Src\BoundedContext\Order\Domain;
 final class Order{
     private $id;
     private $userId;
-    private $id;
-    private $name;
-    private $price;
-    private $sku;
+    private $subTotal;
+    private $tax;
+    private $total;
     private $status;
-    private $stock;
 
     public function __construct(
         ProductId $id,
