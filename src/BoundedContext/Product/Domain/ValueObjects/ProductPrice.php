@@ -8,12 +8,12 @@ final class ProductPrice
 {
     private $value;
 
-    public function __construct(int $name)
+    public function __construct(float $name)
     {
         $this->value = $name;
     }
 
-    public function value(): int
+    public function value(): float
     {
         return $this->value;
     }

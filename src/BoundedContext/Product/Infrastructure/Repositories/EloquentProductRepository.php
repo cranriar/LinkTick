@@ -15,6 +15,7 @@ use Src\BoundedContext\Product\Domain\ValueObjects\ProductPrice;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductSku;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductStatus;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductStock;
+use Src\BoundedContext\Product\Domain\ValueObjects\ProductTax;
 
 final class EloquentProductRepository implements ProductRepositoryContract
 {
@@ -33,6 +34,7 @@ final class EloquentProductRepository implements ProductRepositoryContract
             'discount' => $product->discount()->value(),
             'name' => $product->name()->value(),
             'price' => $product->price()->value(),
+            'tax' => $product->tax()->value(),
             'sku' => $product->sku()->value(),
             'status' => $product->status()->value(),
             'stock' => $product->stock()->value(),
@@ -73,6 +75,7 @@ final class EloquentProductRepository implements ProductRepositoryContract
             new ProductDiscount($product->discount),
             new ProductName($product->name),
             new ProductPrice($product->price),
+            new ProductTax($product->tax),
             new ProductSku($product->sku),
             new ProductStatus((bool) $product->status),
             new ProductStock($product->stock)
@@ -95,6 +98,7 @@ final class EloquentProductRepository implements ProductRepositoryContract
                 new ProductDiscount($product->discount),
                 new ProductName($product->name),
                 new ProductPrice($product->price),
+                new ProductTax($product->tax),
                 new ProductSku($product->sku),
                 new ProductStatus($status),
                 new ProductStock($product->stock)

@@ -13,6 +13,7 @@ use Src\BoundedContext\Product\Domain\ValueObjects\ProductPrice;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductSku;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductStatus;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductStock;
+use Src\BoundedContext\Product\Domain\ValueObjects\ProductTax;
 
 final class Product{
     private $description;
@@ -20,6 +21,7 @@ final class Product{
     private $id;
     private $name;
     private $price;
+    private $tax;
     private $sku;
     private $status;
     private $stock;
@@ -30,6 +32,7 @@ final class Product{
         ProductDiscount $discount,
         ProductName $name,
         ProductPrice $price,
+        ProductTax $tax,
         ProductSku $sku,
         ProductStatus $status,
         ProductStock $stock
@@ -40,6 +43,7 @@ final class Product{
         $this->discount = $discount;
         $this->name = $name;
         $this->price = $price;
+        $this->tax = $tax;
         $this->sku = $sku;
         $this->status = $status;
         $this->stock = $stock;
@@ -86,6 +90,10 @@ final class Product{
     {
         return $this->stock;
     }
+    public function tax(): ProductTax
+    {
+        return $this->tax;
+    }
 
     public static function create(
         ProductId $id,
@@ -93,6 +101,7 @@ final class Product{
         ProductDiscount $discount,
         ProductName $name,
         ProductPrice $price,
+        ProductTax $tax,
         ProductSku $sku,
         ProductStatus $status,
         ProductStock $stock
@@ -104,6 +113,7 @@ final class Product{
             $discount,
             $name,
             $price,
+            $tax,
             $sku,
             $status,
             $stock,

@@ -29,9 +29,8 @@ final class OrderTotal
     {
         $options = array(
             'options' => array(
-                'min_range' => 1.00,
-'max_range' => 1000000.00
-)
+            'max_range' => 1000000.00
+            )
         );
 
         if (!filter_var($total, FILTER_VALIDATE_FLOAT, $options)) {

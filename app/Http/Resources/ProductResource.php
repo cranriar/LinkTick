@@ -21,6 +21,7 @@ class ProductResource extends JsonResource
                 'discount' => $this->discount()->value(),
                 'name' => $this->name()->value(),
                 'price' => $this->price()->value(),
+                'tax' => $this->tax()->value(),
                 'sku' => $this->sku()->value(),
                 'status' => $this->status()->value(),
                 'stock' => $this->stock()->value(),

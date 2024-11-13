@@ -12,7 +12,7 @@ use Src\BoundedContext\Order\Domain\ValueObjects\OrderSubTotal;
 use Src\BoundedContext\Order\Domain\ValueObjects\OrderTax;
 use Src\BoundedContext\Order\Domain\ValueObjects\OrderTotal;
 use Src\BoundedContext\Order\Domain\ValueObjects\OrderUserId;
-use Src\BoundedContext\Product\Domain\Contracts\OrderRepositoryContract;
+use Src\BoundedContext\Order\Domain\Contracts\OrderRepositoryContract;
 
 final class EloquentOrderRepository implements OrderRepositoryContract
 {
@@ -23,35 +23,40 @@ final class EloquentOrderRepository implements OrderRepositoryContract
         $this->eloquentModelOrder = new Order();
     }
 
-    public function save(DomainOrder $order) : void{
+    public function save(DomainOrder $order) : OrderId{
         $newProduct = $this->eloquentModelOrder;
 
         $data = [
-            'userId' => $order->userId()->value(),
+            'user_id' => $order->userId()->value(),
             'discount' => $order->discount()->value(),
-            'subTotal' => $order->subTotal()->value(),
+            'sub_total' => $order->subTotal()->value(),
             'tax' => $order->tax()->value(),
             'total' => $order->total()->value(),
             'status' => $order->status()->value(),
         ];
-        $newProduct->create($data);
+        $orderId = $newProduct->create($data)->id;
+        return new OrderId($orderId);
     }
 
-    public function update(OrderId $id, DomainOrder $order): void{
+    public function update(
+            OrderId $id,
+            OrderDiscount $discount, 
+            OrderSubTotal $subTotal,
+            OrderTax $tax,
+            OrderTotal $total): void{
         $orderToUpdate = $this->eloquentModelOrder;
         $data = [
-            'discount' => $order->discount()->value(),
-            'subTotal' => $order->subTotal()->value(),
-            'tax' => $order->tax()->value(),
-            'total' => $order->total()->value(),
-            'status' => $order->status()->value(),
+            'discount' => $discount->value(),
+            'sub_total' => $subTotal->value(),
+            'tax' => $tax->value(),
+            'total' => $total->value(),
         ];
         $orderToUpdate
             ->findOrFail($id->value())
             ->update($data);
     }
 
-    public function delete(OrderId $id): void{
+    public function cancel(OrderId $id): void{
         $this->eloquentModelOrder
             ->findOrFail($id->value())
             ->delete();

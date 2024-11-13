@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Src\BoundedContext\Product\Domain\ValueObjects;
 
-final class ProductDiscount
+final class ProductTax
 {
     private $value;
 
-    public function __construct(float $name)
+    public function __construct(float $tax)
     {
-        $this->value = $name;
+        $this->value = $tax;
     }
 
     public function value(): float

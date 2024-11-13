@@ -25,6 +25,7 @@ final class CreateProductController{
         $productId = (int) 1;
         $productName = $request->input('name');
         $productPrice = $request->input('price');
+        $productTax = $request->input('tax');
         $productSku = $request->input('sku');
         $productStatus = $request->input('status');
         $productStock = $request->input('stock');
@@ -35,6 +36,7 @@ final class CreateProductController{
             $productDiscoun,
             $productName,
             $productPrice,
+            $productTax,
             $productSku,
             $productStatus,
             $productStock,

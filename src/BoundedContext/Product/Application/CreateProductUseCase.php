@@ -12,6 +12,7 @@ use Src\BoundedContext\Product\Domain\ValueObjects\ProductPrice;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductSku;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductStatus;
 use Src\BoundedContext\Product\Domain\ValueObjects\ProductStock;
+use Src\BoundedContext\Product\Domain\ValueObjects\ProductTax;
 
 final class CreateProductUseCase{
     private $repository;
@@ -23,9 +24,10 @@ final class CreateProductUseCase{
     public function __invoke(
         int $id,
         string $productDescription,
-        int $productDiscount,
+        float $productDiscount,
         string $productName,
-        int $productPrice,
+        float $productPrice,
+        float $productTax,
         string $productSku,
         bool $productStatus,
         int $productStock,
@@ -36,6 +38,7 @@ final class CreateProductUseCase{
         $discount = new ProductDiscount($productDiscount);
         $name = new ProductName($productName);
         $price = new ProductPrice($productPrice);
+        $tax = new ProductTax($productTax);
         $sku = new ProductSku($productSku);
         $status = new ProductStatus($productStatus);
         $stock = new ProductStock($productStock);
@@ -46,6 +49,7 @@ final class CreateProductUseCase{
             $discount,
             $name,
             $price,
+            $tax,
             $sku,
             $status,
             $stock,

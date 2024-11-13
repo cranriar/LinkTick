@@ -11,6 +11,7 @@ class Product extends Model
         'discount',
         'name',
         'price',
+        'tax',
         'sku',
         'status',
         'stock',

@@ -29,9 +29,8 @@ final class OrderDiscount
     {
         $options = array(
             'options' => array(
-                'min_range' => 0.00,
-'max_range' => 1000000.00
-)
+                'max_range' => 1000000.00
+                )
         );
 
         if (!filter_var($discount, FILTER_VALIDATE_FLOAT, $options)) {
